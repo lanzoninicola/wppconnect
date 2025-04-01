@@ -1,0 +1,70 @@
+### https://wppconnect.io/swagger/wppconnect-server/
+
+@session = AMODOMIO_BOT
+@token = AMODOMIO_BOT:$2b$10$VMIReKOI2D9HvTVQ5J878O0Tjxg.d_fFJE7BFA_yWT2MLc_EB65Gq
+
+# @port = 8081
+@port = 21465
+
+// wppconeect-server/src/config.ts
+@secret_key = THISISMYSECURETOKEN
+
+### generate-token
+POST http://localhost:{{port}}/api/{{session}}/{{secret_key}}/generate-token
+Accept: application/json
+Content-Type: application/application/json
+
+{
+  "session": @{{session}},
+  "secret_key": @{{secret_key}}
+}
+
+###
+GET http://localhost:{{port}}/api/{{secret_key}}/show-all-sessions
+Accept: application/json
+Content-Type: application/application/json
+Authorization: Bearer {{token}}
+
+###
+POST http://localhost:{{port}}/api/{{secret_key}}/logout-session
+Accept: application/json
+Content-Type: application/application/json
+Authorization: Bearer {{token}}
+
+{
+  "session": "NERDWHATS_AMERICA"
+}
+
+###
+POST http://localhost:{{port}}/api/{{secret_key}}/logout-session
+Accept: application/json
+Content-Type: application/application/json
+Authorization: Bearer {{token}}
+
+{
+  "session": "NERDWHATS_AMERICA"
+}
+
+###
+POST http://localhost:{{port}}/api/{{session}}/{{secret_key}}/clear-session-data
+Accept: application/json
+Content-Type: application/application/json
+Authorization: Bearer {{token}}
+
+###
+POST http://localhost:{{port}}/api/{{session}}/list-chats
+Content-Type: application/application/json
+Authorization: Bearer {{token}}
+
+### send message
+POST http://localhost:{{port}}/api/{{session}}/send-message
+Content-Type: application/application/json
+Authorization: Bearer {{token}}
+
+{
+  "phone": "5546991052049",
+  "isGroup": false,
+  "isNewsletter": false,
+  "isLid": false,
+  "message": "Hi from WPPConnect"
+}
